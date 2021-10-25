@@ -40,6 +40,13 @@
     background: #ffbf00;
 }
 
+.main div {
+    margin: 10px;
+}
+
+.main button{
+    margin-top: 10px;
+}
 .footer { grid-area: footer; }
 
 .container > * {
