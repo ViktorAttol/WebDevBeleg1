@@ -12,19 +12,19 @@
     font-style: italic;
 }
 
-.header {
+header {
     grid-area: header;
     background: #ffbf00;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.navbar {
+nav {
     grid-area: navbar;
     background: #8045d3;
 }
 
-.footer {
+footer {
     grid-area: footer;
     background: #8045d3;
     text-align: center;
