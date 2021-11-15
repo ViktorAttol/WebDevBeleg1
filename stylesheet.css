@@ -24,6 +24,12 @@ nav {
     background: #8045d3;
 }
 
+nav li{
+    display: inline;
+    margin: 5px;
+    padding: 5px;
+}
+
 footer {
     grid-area: footer;
     background: #8045d3;
@@ -35,19 +41,22 @@ footer {
 
 .placeholder2 { grid-area: placeholder2; }
 
-.main {
+main {
     grid-area: main;
     background: #ffbf00;
 }
 
-.main div {
+main ul li {
+    border: 1px solid black;
+}
+
+main div {
     margin: 10px;
 }
 
-.main button{
+main button{
     margin-top: 10px;
 }
-.footer { grid-area: footer; }
 
 .container > * {
     /*border:1px solid black;*/
@@ -55,19 +64,13 @@ footer {
 
 }
 
-.navbar li{
-    display:inline;
-    margin: 5px;
-    padding: 5px;
-}
-
-.navbar a {
+nav a {
     text-decoration: none;
     font-weight: bold;
     color: #ffbf00;
 }
 
-.navbar a:hover {
+nav a:hover {
     color: red;
 }
 
@@ -87,8 +90,4 @@ footer {
 
 .journeyList .reisename {
     width: 100px;
-}
-
-.main ul li {
-    border:1px solid black;
 }
