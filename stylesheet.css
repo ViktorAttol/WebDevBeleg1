@@ -1,4 +1,4 @@
-.container {
+body {
     display: grid;
     grid-template-columns: 0.4fr 2.2fr 0.4fr;
     grid-template-rows: 0.3fr 0.3fr 2.9fr 0.5fr;
@@ -58,7 +58,7 @@ main button{
     margin-top: 10px;
 }
 
-.container > * {
+body > * {
     /*border:1px solid black;*/
     text-align: center;
 
