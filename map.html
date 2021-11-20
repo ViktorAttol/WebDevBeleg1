@@ -20,7 +20,7 @@
           <a href="editJourney.html">Edit</a>
         </li>
         <li>
-          <button onclick="window.location.href='https://wizardly-poincare-1df917.netlify.app';">Log out</button>
+          <button>Log out</button>
         </li>
       </ul>
     </nav>
@@ -32,5 +32,10 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Simple_world_map.svg" alt="">
     </main>
     <footer>copyright bla und keks</footer>
+    <script>
+      document.querySelector("button").addEventListener('click', (event) => {
+        window.location.replace('https://wizardly-poincare-1df917.netlify.app');
+      });
+    </script>
   </body>
 </html>
