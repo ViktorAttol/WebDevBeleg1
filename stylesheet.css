@@ -58,6 +58,11 @@ main button{
     margin-top: 10px;
 }
 
+#map {
+  height: 150vh;
+  width: 80vw;
+}
+
 body > * {
     /*border:1px solid black;*/
     text-align: center;
