@@ -130,23 +130,25 @@
           const key = localStorage.key(i);
           const value = localStorage.getItem(key);
           const storedIds = JSON.parse(value).id;
-          if (storedIds === r.id) {
+          if (storedIds == id) {
             localStorage.removeItem(key);
           }
         }
       }
       
       function editor(r) {
+        const id = r.id;
         creator.innerHTML = "Edit Journey";
         for (var i = 0; i < localStorage.length; i++) {
           const key = localStorage.key(i);
           const value = localStorage.getItem(key);
           const storedIds = JSON.parse(value).id;
-          if (storedIds === r.id) {
+          if (storedIds == r.id) {
             main.querySelector("#reiseName").value = r.name;
             frame.contentWindow.document.querySelector("select").value = r.land;
             main.querySelector("#startDatum").value = r.start;
             main.querySelector("#endDatum").value = r.end;
+            remover(r);
           }
         }
       }
@@ -161,6 +163,7 @@
           editButton.innerHTML = "edit journey";
           editButton.onclick = function() {
             editor(r);
+            window.location.reload();
           }
           var deleteButton = document.createElement("button");
           deleteButton.innerHTML = "delete";
@@ -181,7 +184,7 @@
           var country = frame.contentWindow.document.querySelector("select").value;
           var start = main.querySelector("#startDatum").value;
           var end = main.querySelector("#endDatum").value;
-          var id = Math.floor(Math.random() * 500)
+          var id = Math.floor(Math.random() * 500);
           
           const trip = new Reise(name, country, start, end);
           const savedTrip = store(trip);
