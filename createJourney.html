@@ -125,19 +125,17 @@
       }
       
       function remover(r) {
-        const id = r.id;
         for (var i = 0; i < localStorage.length; i++) {
           const key = localStorage.key(i);
           const value = localStorage.getItem(key);
           const storedIds = JSON.parse(value).id;
-          if (storedIds == id) {
+          if (storedIds == r.id) {
             localStorage.removeItem(key);
           }
         }
       }
       
       function editor(r) {
-        const id = r.id;
         creator.innerHTML = "Edit Journey";
         for (var i = 0; i < localStorage.length; i++) {
           const key = localStorage.key(i);
