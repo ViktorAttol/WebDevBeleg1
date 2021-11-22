@@ -145,7 +145,7 @@
           
           const trip = new Reise(name, country, start, end);
           const savedTrip = store(trip);
-          displayReise(JSON.parse(savedTrip));
+          displayReise(trip));
       });
 
     </script>
