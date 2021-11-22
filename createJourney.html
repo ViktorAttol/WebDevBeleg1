@@ -61,6 +61,14 @@
       const creator = main.querySelector("button");
       const frame = document.querySelector("iframe");
       var key = 0;
+      
+      window.addEventListener('DOMContentLoaded', (event) => {
+        for (i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          const value = localStorage.getItem(key);
+          displayReise(JSON.parse(value));
+        }
+      });
 
       // from https://stackoverflow.com/posts/6178341/revisions
       function checkDate(date) {
