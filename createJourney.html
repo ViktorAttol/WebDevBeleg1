@@ -36,12 +36,11 @@
       </div>
       <div>
         <label for="startDatum">Start Datum</label>
-        <input type="date" id="startDatum" value="TT.MM.JJJJ" required pattern="\d{2}.\d{2}.\d{4}">
+        <input type="date" id="startDatum" required pattern="\d{2}.\d{2}.\d{4}">
       </div>
-
       <div>
         <label for="endDatum">End Datum</label>
-        <input type="date" id="endDatum" value="TT.MM.JJJJ" required pattern="\d{2}.\d{2}.\d{4}">
+        <input type="date" id="endDatum" required pattern="\d{2}.\d{2}.\d{4}">
       </div>
       <div>
         <iframe src="countries.html"></iframe>
@@ -60,6 +59,7 @@
     <script>
       const main = document.querySelector("main");
       const creator = main.querySelector("button");
+      const frame = document.querySelector("iframe");
 
       // from https://stackoverflow.com/posts/6178341/revisions
       function checkDate(date) {
@@ -115,7 +115,7 @@
             window.location.assign('editJourney.html');
           }
           var name = main.querySelector("#reiseName").value;
-          var country = main.querySelector("select").value;
+          var country = frame.contentWindow.document.querySelector("select").value;
           var start = main.querySelector("#startDatum").value;
           var end = main.querySelector("#endDatum").value;
           jData.innerText = name + ' \n nach: ' + country + ' \n von: ' + start + ' \n bis: ' + end + '.';
