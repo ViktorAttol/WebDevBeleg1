@@ -189,11 +189,7 @@
           const trip = new Reise(name, country, start, end);
           const savedTrip = store(trip);
           displayReise(JSON.parse(savedTrip));
-        
-          main.querySelector("#reiseName").value = "";
-          frame.contentWindow.document.querySelector("select").value = "";
-          main.querySelector("#startDatum").value = "";
-          main.querySelector("#endDatum").value = "";
+
           creator.innerHTML = "Create Journey";
       });
 
