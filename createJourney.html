@@ -16,10 +16,7 @@
           <a href="map.html">Map</a>
         </li>
         <li>
-          <a href="createJourney.html">Create</a>
-        </li>
-        <li>
-          <a href="editJourney.html">Edit</a>
+          <a href="createJourney.html">Manage</a>
         </li>
         <li>
           <button>Log out</button>
@@ -139,6 +136,21 @@
         }
       }
       
+      function editor(r) {
+        creator.innerHTML = "Edit Journey";
+        for (var i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          const value = localStorage.getItem(key);
+          const storedIds = JSON.parse(value).id;
+          if (storedIds === r.id) {
+            main.querySelector("#reiseName").value = r.name;
+            frame.contentWindow.document.querySelector("select").value = r.land;
+            main.querySelector("#startDatum").value = r.start;
+            main.querySelector("#endDatum").value = r.end;
+          }
+        }
+      }
+      
       function displayReise(r) {
         if (r.name !== "" && compareDate(r.start, r.end) && r.land !== "") {
           var jHouse = document.createElement("div");
@@ -148,7 +160,7 @@
           var editButton = document.createElement("button");
           editButton.innerHTML = "edit journey";
           editButton.onclick = function() {
-            window.location.assign('editJourney.html');
+            editor(r);
           }
           var deleteButton = document.createElement("button");
           deleteButton.innerHTML = "delete";
@@ -174,6 +186,12 @@
           const trip = new Reise(name, country, start, end);
           const savedTrip = store(trip);
           displayReise(JSON.parse(savedTrip));
+        
+          main.querySelector("#reiseName").value = "";
+          frame.contentWindow.document.querySelector("select").value = "";
+          main.querySelector("#startDatum").value = "";
+          main.querySelector("#endDatum").value = "";
+          creator.innerHTML = "Create Journey";
       });
 
     </script>
