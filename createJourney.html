@@ -104,7 +104,7 @@
       }
 
       creator.addEventListener('click', (event) => {
-        if (main.querySelector("#reiseName").value !== "" && compareDate(main.querySelector("#startDatum").value, main.querySelector("#endDatum").value)) {
+        if (main.querySelector("#reiseName").value !== "" && compareDate(main.querySelector("#startDatum").value, main.querySelector("#endDatum").value) && frame.contentWindow.document.querySelector("select").value !== "") {
           var jHouse = document.createElement("div");
           jHouse.className = "journey";
           jHouse.style.border = "thin solid";
@@ -115,7 +115,7 @@
             window.location.assign('editJourney.html');
           }
           var name = main.querySelector("#reiseName").value;
-          var country = frame.contentWindow.document.querySelector("select").value;
+          var country = frame.contentWindow.document.querySelector("select").innerHTML;
           var start = main.querySelector("#startDatum").value;
           var end = main.querySelector("#endDatum").value;
           jData.innerText = name + ' \n nach: ' + country + ' \n von: ' + start + ' \n bis: ' + end + '.';
