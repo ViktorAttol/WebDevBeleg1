@@ -60,6 +60,7 @@
       const main = document.querySelector("main");
       const creator = main.querySelector("button");
       const frame = document.querySelector("iframe");
+      var key = 0;
 
       // from https://stackoverflow.com/posts/6178341/revisions
       function checkDate(date) {
@@ -145,7 +146,7 @@
           
           const trip = new Reise(name, country, start, end);
           const savedTrip = store(trip);
-          displayReise(trip));
+          displayReise(JSON.parse(savedTrip));
       });
 
     </script>
