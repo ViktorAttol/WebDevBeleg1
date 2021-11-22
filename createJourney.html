@@ -42,8 +42,10 @@
             <input type="date" id="endDatum" required>
         </div>
         <div>
-        <label for="reiseLand">Reiseland</label>
-        <input type="text" id="reiseLand" required>
+        <select>
+          <option>A</option>
+          <option>B</option>
+        </select>
         </div>
             <button>Create Journey</button>
     </main>
@@ -54,6 +56,75 @@
       btn.addEventListener('click', (event) => {
         window.location.replace('https://wizardly-poincare-1df917.netlify.app');
       })
+    </script>
+     <script>
+      const main = document.querySelector("main");
+      const creator = main.querySelector("button");
+
+      // from https://stackoverflow.com/posts/6178341/revisions
+      function checkDate(date) {
+
+        if (!/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(date))
+          return false;
+
+        var parts = date.split(".");
+        var day = parseInt(parts[0], 10);
+        var month = parseInt(parts[1], 10);
+        var year = parseInt(parts[2], 10);
+
+        // Check the ranges of month and year
+        if (year < 1000 || year > 3000 || month == 0 || month > 12)
+          return false;
+
+        var monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        // Adjust for leap years
+        if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+          monthLength[1] = 29;
+
+        // Check the range of the day
+        return day > 0 && day <= monthLength[month - 1];
+      }
+
+      function compareDate(date1, date2) {
+        if (checkDate(date1) && checkDate(date2)) {
+          var parts1 = date1.split(".");
+          var parts2 = date2.split(".");
+          var year1 = parseInt(parts1[2], 10);
+          var year2 = parseInt(parts2[2], 10);
+          if (year1 > year2) return false;
+          var month1 = parseInt(parts1[1], 10);
+          var month2 = parseInt(parts2[1], 10);
+          if (month1 > month2) return false;
+          var day1 = parseInt(parts1[0], 10);
+          var day2 = parseInt(parts2[0], 10);
+          if (day1 > day2) return false;
+          return true;
+        }
+      }
+
+      creator.addEventListener('click', (event) => {
+        if (main.querySelector("#reiseName").value !== "" && compareDate(main.querySelector("#startDatum").value, main.querySelector("#endDatum").value)) {
+          var jHouse = document.createElement("div");
+          jHouse.className = "journey";
+          jHouse.style.border = "thin solid";
+          var jData = document.createElement("p");
+          var editButton = document.createElement("button");
+          editButton.innerHTML = "edit journey";
+          editButton.onclick = function() {
+            window.location.assign('editJourney.html');
+          }
+          var name = main.querySelector("#reiseName").value;
+          var country = main.querySelector("select").value;
+          var start = main.querySelector("#startDatum").value;
+          var end = main.querySelector("#endDatum").value;
+          jData.innerText = name + ' \n nach: ' + country + ' \n von: ' + start + ' \n bis: ' + end + '.';
+          jHouse.append(jData);
+          jHouse.append(editButton);
+          main.append(jHouse);
+        }
+      });
+
     </script>
 </body>
 </html>
