@@ -161,7 +161,6 @@
           editButton.innerHTML = "edit journey";
           editButton.onclick = function() {
             editor(r);
-            window.location.reload();
           }
           var deleteButton = document.createElement("button");
           deleteButton.innerHTML = "delete";
@@ -188,7 +187,7 @@
           const savedTrip = store(trip);
           displayReise(JSON.parse(savedTrip));
 
-          creator.innerHTML = "Create Journey";
+          window.location.reload();
       });
 
     </script>
