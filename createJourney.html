@@ -116,7 +116,7 @@
         var real = key.toString();
         key += 1;
         localStorage.setItem(real, JSON.stringify(r));
-        localStorage.getItem(real);
+        return localStorage.getItem(real);
       }
 
       function displayReise(r) {
@@ -144,8 +144,8 @@
           var end = main.querySelector("#endDatum").value;
           
           const trip = new Reise(name, country, start, end);
-          store(trip);
-          displayReise(trip);
+          const savedTrip = store(trip);
+          displayReise(JSON.parse(savedTrip));
       });
 
     </script>
