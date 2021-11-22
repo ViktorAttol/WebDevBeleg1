@@ -115,7 +115,7 @@
             window.location.assign('editJourney.html');
           }
           var name = main.querySelector("#reiseName").value;
-          var country = frame.contentWindow.document.querySelector("select").innerHTML;
+          var country = frame.contentWindow.document.querySelector("select").value;
           var start = main.querySelector("#startDatum").value;
           var end = main.querySelector("#endDatum").value;
           jData.innerText = name + ' \n nach: ' + country + ' \n von: ' + start + ' \n bis: ' + end + '.';
