@@ -104,9 +104,23 @@
           return true;
         }
       }
+        
+      function Reise(name, land, start, end) {
+        this.name = name;
+        this.land = land;
+        this.start = start;
+        this.end = end;
+      }
 
-      creator.addEventListener('click', (event) => {
-        if (main.querySelector("#reiseName").value !== "" && compareDate(main.querySelector("#startDatum").value, main.querySelector("#endDatum").value) && frame.contentWindow.document.querySelector("select").value !== "") {
+      function store(r) {
+        var real = key.toString();
+        key += 1;
+        localStorage.setItem(real, JSON.stringify(r));
+        localStorage.getItem(real);
+      }
+
+      function displayReise(r) {
+        if (r.name !== "" && compareDate(r.start, r.end) && r.land !== "") {
           var jHouse = document.createElement("div");
           jHouse.className = "journey";
           jHouse.style.border = "thin solid";
@@ -116,15 +130,22 @@
           editButton.onclick = function() {
             window.location.assign('editJourney.html');
           }
-          var name = main.querySelector("#reiseName").value;
-          var country = frame.contentWindow.document.querySelector("select").value;
-          var start = main.querySelector("#startDatum").value;
-          var end = main.querySelector("#endDatum").value;
-          jData.innerText = name + ' \n nach: ' + country + ' \n von: ' + start + ' \n bis: ' + end + '.';
+          jData.innerText = r.name + ' \n nach: ' + r.land + ' \n von: ' + r.start + ' \n bis: ' + r.end + '.';
           jHouse.append(jData);
           jHouse.append(editButton);
           main.append(jHouse);
         }
+      }
+
+      creator.addEventListener('click', (event) => {
+          var name = main.querySelector("#reiseName").value;
+          var country = frame.contentWindow.document.querySelector("select").value;
+          var start = main.querySelector("#startDatum").value;
+          var end = main.querySelector("#endDatum").value;
+          
+          const trip = new Reise(name, country, start, end);
+          store(trip);
+          displayReise(trip);
       });
 
     </script>
