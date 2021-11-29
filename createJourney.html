@@ -33,11 +33,11 @@
       </div>
       <div>
         <label for="startDatum">Start Datum</label>
-        <input type="date" id="startDatum" required pattern="\d{2}.\d{2}.\d{4}">
+        <input type="date" id="startDatum" required>
       </div>
       <div>
         <label for="endDatum">End Datum</label>
-        <input type="date" id="endDatum" required pattern="\d{2}.\d{2}.\d{4}">
+        <input type="date" id="endDatum" required>
       </div>
       <div>
         <iframe src="countries.html"></iframe>
@@ -69,13 +69,13 @@
       // from https://stackoverflow.com/posts/6178341/revisions
       function checkDate(date) {
 
-        if (!/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(date))
+        if (!/^\d{4}\-\d{2}\-\d{2}$/.test(date))
           return false;
 
-        var parts = date.split(".");
-        var day = parseInt(parts[0], 10);
+        var parts = date.split("-");
+        var day = parseInt(parts[2], 10);
         var month = parseInt(parts[1], 10);
-        var year = parseInt(parts[2], 10);
+        var year = parseInt(parts[0], 10);
 
         // Check the ranges of month and year
         if (year < 1000 || year > 3000 || month == 0 || month > 12)
@@ -93,18 +93,18 @@
 
       function compareDate(date1, date2) {
         if (checkDate(date1) && checkDate(date2)) {
-          var parts1 = date1.split(".");
-          var parts2 = date2.split(".");
-          var year1 = parseInt(parts1[2], 10);
-          var year2 = parseInt(parts2[2], 10);
+          var parts1 = date1.split("-");
+          var parts2 = date2.split("-");
+          var year1 = parseInt(parts1[0], 10);
+          var year2 = parseInt(parts2[0], 10);
           if (year1 > year2) return false;
           if (year1 < year2) return true;
           var month1 = parseInt(parts1[1], 10);
           var month2 = parseInt(parts2[1], 10);
           if (month1 > month2) return false;
           if (month1 < month2) return true;
-          var day1 = parseInt(parts1[0], 10);
-          var day2 = parseInt(parts2[0], 10);
+          var day1 = parseInt(parts1[2], 10);
+          var day2 = parseInt(parts2[2], 10);
           if (day1 > day2) return false;
           return true;
         }
