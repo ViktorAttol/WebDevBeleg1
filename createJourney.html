@@ -183,7 +183,7 @@
           var end = main.querySelector("#endDatum").value;
           var id = Math.floor(Math.random() * 500);
           
-          const trip = new Reise(name, country, start, end);
+          const trip = new Reise(name, country, start, end, id);
           const savedTrip = store(trip);
           displayReise(JSON.parse(savedTrip));
 
